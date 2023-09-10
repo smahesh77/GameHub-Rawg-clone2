@@ -13,6 +13,7 @@ export interface Game{
     name: String,
     background_image:string,
     parent_platforms: {platform: Platform}[], // an array of objects with a property called platform which is of type Platform
+    metacritic: number
 }
 
 interface FetchGamesRE {
