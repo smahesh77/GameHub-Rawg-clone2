@@ -2,6 +2,7 @@ import React from "react";
 import { Center, Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
+import GenreList from "./components/GenreList";
 
 const App = () => {
   return (
@@ -23,7 +24,7 @@ const App = () => {
           {/*the show will only render the components under it if it is above or below a certain size */}
           <GridItem area="aside" backgroundColor={"gray.600"}>
             {" "}
-            left<div>sidebar</div>
+            <GenreList></GenreList>
           </GridItem>
         </Show>
 
