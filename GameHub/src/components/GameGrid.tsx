@@ -6,7 +6,7 @@ import CardSkel from "./CardSkel";
 import CardStyle from "./CardStyle";
 
 const GameGrid = () => {
-  const { games, error, isLoading } = useGames("test successful");
+  const { data, error, isLoading } = useGames();
   const skeletons =[1,2,3,4,5,6]
 
   return (
@@ -16,7 +16,7 @@ const GameGrid = () => {
         {isLoading && skeletons.map(skeleton => <CardStyle>
           <CardSkel></CardSkel>
         </CardStyle>)}
-        {games?.map((game) => (
+        {data?.map((game) => (
           <CardStyle>
             <GameCard game={game}></GameCard>
           </CardStyle> // we map each game to the gamecard comp we defined earlier
