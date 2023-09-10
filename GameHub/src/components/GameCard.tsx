@@ -12,6 +12,7 @@ const GameCard = ({ game }: Props) => {
   return (
     <Card
       onClick={() => console.log(`clicked ${game.name}`)}
+      width='400px'
       borderRadius={10}
       overflow="hidden"
     >
