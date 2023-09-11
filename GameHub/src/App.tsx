@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Center, Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
+import { Genres } from "./hooks/useGenres";
 
 const App = () => {
+  const [genre, setGenre] = useState<Genres|null>(null)
   return (
     // template is like the layout of our site
     // its like we define the areas in the  form rows and columns like matrix
@@ -22,21 +24,22 @@ const App = () => {
       >
         <GridItem area="nav">
           {" "}
-          <NavBar></NavBar>
+          <NavBar onSelected={() => setGenre(null) }></NavBar>
         </GridItem>
         <Show above="lg">
           {" "}
           {/*the show will only render the components under it if it is above or below a certain size */}
           <GridItem area="aside" px={5}>
             {" "}
-            <GenreList></GenreList>
+            <GenreList onSelected={(genre) => setGenre(genre)
+            }></GenreList>
           </GridItem>
         </Show>
 
         <GridItem area="main">
           {" "}
           <Center>
-            <GameGrid />
+            <GameGrid SelectedGenre={genre} />
           </Center>
         </GridItem>
       </Grid>
