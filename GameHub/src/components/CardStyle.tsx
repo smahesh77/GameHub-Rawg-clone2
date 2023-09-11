@@ -7,7 +7,7 @@ interface Props {
 
 const CardStyle = ({children}:Props) => {
   return (
-    <Box width="400px" borderRadius={10} overflow="hidden">
+    <Box  borderRadius={10} overflow="hidden">
         {children}
     </Box>
   )
