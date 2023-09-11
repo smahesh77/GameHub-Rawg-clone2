@@ -36,11 +36,11 @@ const PlatFormListIcons = ({ platforms }: Props) => {
   return (
     <HStack marginY={1} marginX={1}> {/** just margins */}
       {platforms.map((p) => (
-        <>
+        
             <Icon key={p.id} as={iconMap[p.slug]} color={'gray.500'}>
 
             </Icon>
-        </>
+        
       ))}
     </HStack>
     // here we can just use the platform.name cause we are passing the platform array not the object
