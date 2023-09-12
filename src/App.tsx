@@ -69,11 +69,12 @@ const App = () => {
         }}
       >
         <GridItem area="nav">
-          <VStack align='start'>
+          
             {isMobile && (
               <Box
                 bgSize="sm"
-                pl='3px'
+                alignItems='start'
+                p='3'
                 margin={1}
               >
                 <Button
@@ -92,7 +93,7 @@ const App = () => {
               }
               onSearch={(SearchText) => setGameObj({ ...gameObj, SearchText })}
             ></NavBar>
-          </VStack>
+          
         </GridItem>
         {!isMobile && (
           <Show above="lg">
