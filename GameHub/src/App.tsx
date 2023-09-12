@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Center, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
+import { Box, Center, Flex, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
@@ -7,6 +7,7 @@ import { Genres } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/useGames";
 import SortSelector from "./components/SortSelector";
+import GameHeading from "./components/Heading";
 
 export interface GameQuery {
   genre: Genres | null;
@@ -54,18 +55,26 @@ const App = () => {
 
         <GridItem area="main">
           {" "}
-          <HStack pl={3} spacing={5} marginBottom={5}>
-            <PlatformSelector
-              onSelected={(platform) => setGameObj({ ...gameObj, platform })}
-              SelectedPlatform={gameObj.platform}
-            ></PlatformSelector>
-            <SortSelector
-              SortOrder={gameObj.SortOrder}
-              onSort={(SortOrder) => {
-                setGameObj({ ...gameObj, SortOrder });
-              }}
-            ></SortSelector>
-          </HStack>
+          <Box pl={3}>
+            <GameHeading GameObj={gameObj}></GameHeading>
+            <Flex marginBottom={5}>
+            
+              <Box marginRight={5}>
+                <PlatformSelector
+                  onSelected={(platform) => setGameObj({ ...gameObj, platform })}
+                  SelectedPlatform={gameObj.platform}
+            
+                ></PlatformSelector>
+              </Box>
+              <SortSelector
+                SortOrder={gameObj.SortOrder}
+                onSort={(SortOrder) => {
+                  setGameObj({ ...gameObj, SortOrder });
+                }}
+            
+              ></SortSelector>
+            </Flex>
+          </Box>
           <Center>
             <GameGrid GameObj={gameObj} />
           </Center>

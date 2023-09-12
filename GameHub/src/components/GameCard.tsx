@@ -16,16 +16,17 @@ const GameCard = ({ game }: Props) => {
     >
       <Image src={game.background_image}></Image>
       <CardBody>
-        <Heading fontSize={"2xl"}>{game.name}</Heading>
-        {/* {game.parent_platforms.map((platform) => <Text >{platform.platform.name}</Text>)} 
-            you can destructure the object here like({platform}) => <>{platform.name}<> */}
-        <HStack justify='space-between' >
+      <HStack justify='space-between' mb={3}>
           <PlatFormListIcons
             platforms={game.parent_platforms.map((p) => p.platform)}
           ></PlatFormListIcons>
           {/*we then pass platform property to comp  */}
           <CriticScore score={game.metacritic}></CriticScore>
         </HStack>
+        <Heading fontSize={"2xl"}>{game.name}</Heading>
+        {/* {game.parent_platforms.map((platform) => <Text >{platform.platform.name}</Text>)} 
+            you can destructure the object here like({platform}) => <>{platform.name}<> */}
+        
       </CardBody>
     </Card>
   );

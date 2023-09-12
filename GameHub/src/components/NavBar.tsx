@@ -12,10 +12,10 @@ interface Props {
 const NavBar = ({onSelected, onSearch}: Props) => {
     // Hstack add every thing horizontally, pretty straightforward align
   return (
-    <HStack justifyContent="space-between" padding={10}>
+    <HStack justifyContent="space-between" padding={5}>
         <>
         
-        <Image src={logo} boxSize="140px" onClick={()=>onSelected()}></Image>
+        <Image src={logo} boxSize="100px" onClick={()=>onSelected()}></Image>
         <SearchBar onSearch={onSearch}></SearchBar>
         </>
         <ColorModeSwitch/>
