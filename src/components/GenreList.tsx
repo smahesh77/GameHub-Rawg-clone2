@@ -16,9 +16,10 @@ import GenSkel from "./GenSkel";
 interface Props {
   onSelected: (genre: Genres | null) => void;
   SelectedGenre: Genres | null;
+  onClickk: () => void;
 }
 
-const GenreList = ({ onSelected, SelectedGenre }: Props) => {
+const GenreList = ({ onSelected, SelectedGenre, onClickk }: Props) => {
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
   const { data, isLoading } = useGenres();
   if (isLoading) {
@@ -36,19 +37,23 @@ const GenreList = ({ onSelected, SelectedGenre }: Props) => {
         Genres
       </Heading>
       <List>
-        <ListItem key={'fhbodhbf'} padding="5px">
+        <ListItem key={"fhbodhbf"} padding="5px">
           <HStack>
             <Image
               boxSize={"32px"}
               borderRadius={8}
               objectFit="cover"
-              src={'https://media.rawg.io/media/crop/600/400/games/26d/26d4437715bee60138dab4a7c8c59c92.jpg'}
+              src={
+                "https://media.rawg.io/media/crop/600/400/games/26d/26d4437715bee60138dab4a7c8c59c92.jpg"
+              }
             ></Image>
             <Button
               fontWeight={SelectedGenre == null ? "bold" : "normal"}
-              
               fontSize="lg"
-              onClick={() => onSelected(null)}
+              onClick={() => {
+                onSelected(null);
+                onClickk()
+              }}
               variant="link"
             >
               All Games
@@ -71,7 +76,10 @@ const GenreList = ({ onSelected, SelectedGenre }: Props) => {
                 fontWeight={gen.id === SelectedGenre?.id ? "bold" : "normal"}
                 fontSize="lg"
                 variant="link"
-                onClick={() => onSelected(gen)}
+                onClick={() => {
+                  onSelected(gen);
+                  onClickk();
+                }}
               >
                 {gen.name}
               </Button>

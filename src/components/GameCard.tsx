@@ -12,10 +12,10 @@ const GameCard = ({ game }: Props) => {
   return (
     <Card
       onClick={() => console.log(`clicked ${game.name}`)}
-      
+      borderBottom={26}
     >
       <Image src={game.background_image}></Image>
-      <CardBody>
+      <CardBody border={6}>
       <HStack justify='space-between' mb={3}>
           <PlatFormListIcons
             platforms={game.parent_platforms.map((p) => p.platform)}
