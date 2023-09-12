@@ -1,4 +1,4 @@
-import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
+import { Button, Input, InputGroup, InputLeftElement, InputRightElement } from "@chakra-ui/react";
 import React, { useRef } from "react";
 import { BsSearch } from "react-icons/bs";
 
@@ -21,6 +21,7 @@ const SearchBar = ({onSearch}:Props) => {
           variant="filled"
           ref={ref}
         ></Input>
+        <Button type="submit" colorScheme="green" borderRadius={10} marginLeft={2} padding="20px">Search</Button>
       </InputGroup>
     </form>
   );
