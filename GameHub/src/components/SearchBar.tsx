@@ -16,6 +16,7 @@ const SearchBar = ({onSearch}:Props) => {
       <InputGroup>
         <InputLeftElement children={<BsSearch />}></InputLeftElement>
         <Input
+        minWidth={20}
           borderRadius={10}
           placeholder="Search games"
           variant="filled"
