@@ -69,14 +69,11 @@ const App = () => {
         }}
       >
         <GridItem area="nav">
-          <VStack>
+          <VStack align='start'>
             {isMobile && (
               <Box
                 bgSize="sm"
-                position="fixed"
-                top="10px"
-                left="10px"
-                zIndex="999"
+                pl='3px'
                 margin={1}
               >
                 <Button
