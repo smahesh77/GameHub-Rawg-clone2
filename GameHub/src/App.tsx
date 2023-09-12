@@ -1,15 +1,21 @@
 import React, { useState } from "react";
-import { Box, Center, Grid, GridItem, Show } from "@chakra-ui/react";
+import { Box, Center, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import { Genres } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/useGames";
+import SortSelector from "./components/SortSelector";
+
+export interface GameQuery {
+  genre:Genres|null;
+  platform:Platform|null;
+  SortOrder:string;
+}
 
 const App = () => {
-  const [genre, setGenre] = useState<Genres|null>(null)
-  const [platform, setPlatform] = useState<Platform|null>(null)
+  const[gameObj, setGameObj] = useState<GameQuery>({} as GameQuery)
   return (
     // template is like the layout of our site
     // its like we define the areas in the  form rows and columns like matrix
@@ -27,25 +33,26 @@ const App = () => {
       >
         <GridItem area="nav">
           {" "}
-          <NavBar onSelected={() => setGenre(null) }></NavBar>
+          <NavBar onSelected={() => setGameObj({...gameObj,platform:null, genre:null}) }></NavBar>
         </GridItem>
         <Show above="lg">
           {" "}
           {/*the show will only render the components under it if it is above or below a certain size */}
           <GridItem area="aside" px={5}>
             {" "}
-            <GenreList onSelected={(genre) => setGenre(genre)} SelectedGenre={genre}></GenreList>
+            <GenreList onSelected={(genre) => setGameObj({...gameObj,genre})} SelectedGenre={gameObj.genre}></GenreList>
           </GridItem>
         </Show>
 
         <GridItem area="main">
           {" "}
-          <Box p='10px'>
-            <PlatformSelector  onSelected={(platform) => setPlatform(platform)} SelectedPlatform={platform}></PlatformSelector>
-          </Box>
+          <HStack pl={3} spacing={5} marginBottom={5}>
+            <PlatformSelector  onSelected={(platform) => setGameObj({...gameObj,platform})} SelectedPlatform={gameObj.platform}></PlatformSelector>
+            <SortSelector SortOrder={gameObj.SortOrder} onSort={(SortOrder)=>{setGameObj({...gameObj, SortOrder})}}></SortSelector>
+          </HStack>
           <Center>
             
-            <GameGrid SelectedPlatform={platform} SelectedGenre={genre} />
+            <GameGrid GameObj={gameObj}  />
           </Center>
         </GridItem>
       </Grid>
