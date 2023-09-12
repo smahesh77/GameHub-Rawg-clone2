@@ -26,7 +26,7 @@ const GenreList = ({onSelected, SelectedGenre}:Props) => {
         <ListItem key={gen.id} padding='5px'>
           <HStack >
             <Image boxSize={'32px'} borderRadius={8} src={getCroppedImageUrl(gen.image_background) } ></Image>
-            <Button fontWeight={gen.id===SelectedGenre?.id?'bold':'normal'} fontSize='lg' variant='link' onClick={() =>onSelected(gen)}>{gen.name}</Button>
+            <Button whiteSpace='-moz-pre-wrap' fontWeight={gen.id===SelectedGenre?.id?'bold':'normal'} fontSize='lg' variant='link' onClick={() =>onSelected(gen)}>{gen.name}</Button>
           </HStack>
         </ListItem>
       ))}
